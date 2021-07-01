@@ -12,3 +12,7 @@ socket.on('request', (customer) => {
     socket.emit('acceptance', customer);
   }, 1500);
 });
+
+socket.on('delivery', (customer) => {
+  console.log('Passenger dropped off');
+});

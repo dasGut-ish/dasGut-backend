@@ -9,8 +9,16 @@ const faker = require('faker');
 //   console.log('connected to server');
 // });
 
-socket.on('acceptance', () => {
+socket.on('acceptance', (customer) => {
   console.log('Driver has accepted and enroute to your location');
+  socket.emit('delivery', customer);
+})
+
+socket.on('delivery', () => {
+  setTimeout(() => {
+    console.log('I have arrived');
+    // socket.emit('delivery', customer);
+  }, 1000);
 })
 
 setInterval(() => {

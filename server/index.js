@@ -18,5 +18,10 @@ server.on('connection', (socket) => {
     console.log('Driver accepted and is enroute');
     server.emit('acceptance', customer);
   })
+
+  socket.on('delivery', (customer) => {
+    console.log('Passenger has been delivered to their destination');
+    server.emit('delivery', customer);
+  })
   
 });
