@@ -3,8 +3,10 @@
 ## Name: Tek Jones and Tyler Johnson
 
 #### ENV Requirements
+PORT=3001
 
 #### Running the App
-Install socket.io
+npm install socket.io
+npm install faker
 
 #### UML
