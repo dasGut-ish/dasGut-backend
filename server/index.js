@@ -31,7 +31,7 @@ server.on('connection', (socket) => {
 
       setTimeout(function(){
         console.log('lets go');
-        const go = "Driver is here let's go!"
+        const go = "🚙 Driver is here let's go!"
         server.emit('letsGo', go);
   
       }, 3000)
@@ -41,7 +41,7 @@ server.on('connection', (socket) => {
 
   socket.on('go', (customer) => {
     setTimeout(function(){
-      const customerTip = `${customer} Says, Thanks for the ride here is a tip`
+      const customerTip = `${customer} Says, Thanks for the ride: here is a tip 💰 `
 
       console.log('Thanks for the ride, here is a tip');
       server.emit('tip', customerTip);
