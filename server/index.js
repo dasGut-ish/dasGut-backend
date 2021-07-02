@@ -18,18 +18,42 @@ server.on('connection', (socket) => {
 
   socket.on('request', (customer) => {
     console.log('Customer has requested a pickup');
-    server.emit('request', customer);
+    setTimeout(function(){
+      server.emit('ready', customer);
+    }, 1000);
   })
 
-  socket.on('acceptance', (customer) => {
-    console.log('Driver accepted and is enroute');
-    server.emit('acceptance', customer);
+
+  socket.on('route', (route) => {
+    
+      console.log(route);
+      server.emit('coming', route);
+
+      setTimeout(function(){
+        console.log('lets go');
+        const go = "Driver is here let's go!"
+        server.emit('letsGo', go);
+  
+      }, 3000)
+
+   
   })
 
-  socket.on('delivery', (customer) => {
-    console.log('Passenger has been delivered to their destination');
-    server.emit('delivery', customer);
+  socket.on('go', (customer) => {
+    setTimeout(function(){
+      const customerTip = `${customer} Says, Thanks for the ride here is a tip`
+
+      console.log('Thanks for the ride, here is a tip');
+      server.emit('tip', customerTip);
+
+    }, 4000)
   })
+
+  socket.on('tip', (star) => {
+    console.log('Driver rates you five stars');
+    server.emit('star', star);
+  })
+
 
 });
 
